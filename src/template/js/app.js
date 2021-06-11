@@ -21,13 +21,12 @@ weatherForm.addEventListener('submit', (e) => {
                 }
                 else {
                     responseField.textContent = data.forecast;
-                    responseField.textContent += data.location;
+                    responseField.textContent += ' ' + data.location;
 
                 }
             })
         });
     }
-    console.log(address);
-    console.log('testing');
+
 })
 

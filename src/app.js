@@ -80,12 +80,13 @@ app.get('/weather', (req,res) =>{
                     return;
                 }
                 if(forecastData) {
-                    const { observation_time,temperature, weather_descriptions } = forecastData.current;
+                    const { observation_time,temperature, weather_descriptions, feelslike, humidity } = forecastData.current;
                     const  {name} = forecastData.location;
 
                     //   console.log(forecastData);
                     // console.log(`The current forecast in ${forecastData.location.name} as of ${forecastData.current.observation_time} is ${forecastData.current.temperature} degrees. Conditions are ${forecastData.current.weather_descriptions[0]}` );
-                   const forecastmessage = `The current forecast in ${name} as of ${observation_time} is ${temperature} degrees. Conditions are ${weather_descriptions[0]}`;
+                   const forecastmessage = `The current forecast in ${name} as of ${observation_time} is ${temperature} degrees. Feels like ${feelslike}
+                                            Conditions are ${weather_descriptions[0]}. with a humidity of ${humidity}`;
 
                    return res.send({location: name , forecast:  forecastmessage, address: address});
                 }
